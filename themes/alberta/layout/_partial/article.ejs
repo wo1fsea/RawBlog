@@ -35,7 +35,7 @@
   <% } %>
 </article>
 
- <% if (!index && post.comments && config.duoshuo_shortname){ %>
+  <% if (!index && post.comments && config.duoshuo_shortname){ %>
   <section id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="<%= post.layout %>-<%= post.slug %>" data-title="<%= post.title %>" data-url="<%= page.permalink %>"></div>
