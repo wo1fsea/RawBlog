@@ -4,7 +4,8 @@ tags: [Recast & Detour,NavMesh,Game]
 ---
 
 这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。
-（*文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。*）
+
+*（文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。）*
 
 
 ## Recast & Detour
@@ -27,46 +28,55 @@ Mikko Mononen 在该文章 References 部分贴出了一系列相关的参考文
 
 + **Conservative Voxelization**
 Long Zhang, Wei Chen, David S. Ebert, Qunsheng Peng
+[PDF](/files/About_NavMesh/P1_Conservative_voxelization.pdf)
 
 
 + **Real-time Voxelization for Complex Polygonal Models**
 Zhao Dong, Wei Chen, Hujun Bao, Hongxin Zhang, Qunsheng Peng
+[PDF](/files/About_NavMesh/P2_Real-time_Voxelization_for_Complex_Models.pdf)
 
 
 + **Single-pass GPU Solid Voxelization and Applications**
 Elmar Eisemann, Xavier Décoret
+[PDF](/files/About_NavMesh/P3_Single-Pass_GPU_Solid_Voxelization_for_Real-Time_Applications.pdf)
 
 
 + **GPU Gems 2: Flow Simulation with Complex Boundaries**
 Wei Li, Zhe Fan, Xiaoming Wei, Arie Kaufman
+[PDF](/files/About_NavMesh/P4_GPU_Gems_2_Chapter_47_Flow_Simulation_with_Complex_Boundaries.pdf)
 
 
 + **GPU Gems 3: Real-Time Simulation and Rendering of 3D Fluids**
 Keenan Crane, Ignacio Llamas, Sarah Tariq
+[PDF](/files/About_NavMesh/P5_GPU_Gems_3_Real-Time_Simulation_and_Rendering_of_3D_Fluids.pdf)
 
 
 + **Way-Finder: guided tours through complex walkthrough models**
 C. Andújar, P. Vázquez, M. Fairén
+[PDF](/files/About_NavMesh/P6_Way-Finder_guided_tours_through_complex_walkthrough_models.pdf)
 
 
 + **Volumetric Cell-and-Portal Generation**
 Denis Haumont, Olivier Debeir, François Sillion
-
+[PDF](/files/About_NavMesh/P7_Volumetric_cell-and-portal_generation.pdf)
 
 + **Skeleton Extraction of 3D Objects with Visible Repulsive Force**
 Fu-Che Wu, Wan-Chun Ma, Ping-Chou Liou, Rung-Huei Liang, Ming Ouhyoung
-
+[PDF](/files/About_NavMesh/P8_Skeleton_Extraction_of 3D_Objects_with_Visible_Repulsive_Force.pdf)
 
 + **Automated Static and Dynamic Obstacle Avoidance in Arbitrary 3D Polygonal Worlds**
 Edited by Xing-Jian Jing
+[PDF](/files/About_NavMesh/P9_Automated_Static_and Dynamic_ObstacleAvoidance_in_Arbitrary_3D_Polygonal_Worlds.pdf)
 
 
 + **A Navigation Graph for Real-time Crowd Animation on Multilayered and Uneven Terrain**
 Julien Pettré, Jean-Paul Laumond, Daniel Thalmann
+[PDF](/files/About_NavMesh/P10_A_navigation_graph_for_real-time_crowd_animation_on_multilayered_and_uneven_terrain.pdf)
 
 
 + **Pedestrian Reactive Navigation for Crowd Simulation: a Predictive Approach**
 Sébastien Paris, Julien Pettré, Stéphane Donikian
+[PDF](/files/About_NavMesh/P11_Pedestrian_Reactive_Navigation_for_Crowd_Pedestrian_Reactive_Navigation_for_Crowd_Simulation_a_Predictive_Approach.pdf)
 
 ## Study: Navigation Mesh Generation
 Stephen Pratt 在其项目 [《Study: Navigation Mesh Generation》](http://www.critterai.org/projects/nmgen_study/index.html) 中提供了一个 Java 版本的 Recast 实现，并在文档中对算法细节及参数进行了详细的讨论。
@@ -84,7 +94,9 @@ Mikko Mononen 在 Recast & Detour 中生成NavMesh的基本流程受到 GDC2006 
 
 + **Session:  Crowds In A Polygon Soup: Next-Gen Path Planning**
 By David Miles, David Miles, David Miles, David Miles
-
+	
+	+ [Session mp3](/files/About_NavMesh/GDC-06-038.mp3)
+	+ [Session ppt](/files/About_NavMesh/gdc2006_miles_david_pathplanning.ppt)
 
 
 ## 古阿莫带你十分钟看完 NavMesh 生成算法
