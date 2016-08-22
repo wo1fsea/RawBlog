@@ -99,9 +99,9 @@ By David Miles, David Miles, David Miles, David Miles
 	+ [Session ppt](/files/About_NavMesh/gdc2006_miles_david_pathplanning.ppt)
 
 
-## 古阿莫带你十分钟看完 NavMesh 生成算法
-没有时间看完上面资料的同学可以看下面这个《古阿莫带你十分钟看完 NavMesh 生成算法》的小抄。
+## 谷阿莫带你十分钟看完 NavMesh 生成算法
+没有时间看完上面资料的同学可以看下面这个《谷阿莫带你十分钟看完 NavMesh 生成算法》的小抄。
 
-![古阿莫带你十分钟看完 NavMesh 生成算法](/images/About_NavMesh/Image[1].png)
+![谷阿莫带你十分钟看完 NavMesh 生成算法](/images/About_NavMesh/Image[1].png)
 
-[古阿莫带你十分钟看完 NavMesh 生成算法](/2016/08/21/A_Quick_Introduction_to_NavMesh/)
+[谷阿莫带你十分钟看完 NavMesh 生成算法](/2016/08/21/A_Quick_Introduction_to_NavMesh/)
