@@ -1,6 +1,6 @@
 title: 谷阿莫带你十分钟看完 NavMesh 生成算法
 date: 2016-08-21 12:32:22
-tags: [Recast & Detour,NavMesh,Game]
+tags: [Recast & Detour, NavMesh, Game]
 ---
 
 *（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）*
@@ -17,7 +17,7 @@ tags: [Recast & Detour,NavMesh,Game]
 
 ![A Navigation Case in 2D](/images/About_NavMesh/Image[1].png)
 
-<!-- more --> 
+<!-- more -->
 
 一个很朴素的思路，即是把地图数据栅格化（像素化）。在栅格化的地图上，至少可以通过搜索格子的方式（向周围四方向搜索或八方向）找到一条可行的路径，尽管很挫。
 
@@ -45,7 +45,7 @@ tags: [Recast & Detour,NavMesh,Game]
 ![Simplify Polygon](/images/About_NavMesh/Image[7].png)
 
 考虑到简化后的地图实际上很多存在很多可以直接通过直线联通的区域，我们可以进一步对这个地图做一个简单的划分。如下图，简化后的多边形地图区域可以分割为以下四个联通区域。
-  
+
 ![Partition Into Convex Areas](/images/About_NavMesh/Image[8].png)
 
 分割区域按照以下算法进行：

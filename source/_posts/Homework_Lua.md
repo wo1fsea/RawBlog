@@ -1,6 +1,6 @@
 title: 入职作业之json数据与lua vlaue转换
 date: 2015-01-09 21:56:39
-tags: [lua,json,parser]
+tags: [lua, json, Parser]
 ---
 
 
@@ -12,7 +12,7 @@ tags: [lua,json,parser]
 
 ![value](/images/value.png)
 
- <!-- more --> 
+ <!-- more -->
 
 下面是描述几种数据类型的图。
 
@@ -34,13 +34,13 @@ tags: [lua,json,parser]
 则最简单的，上述的value可以描述成
 
 	value ＝ object | array | number | string | true | false | null
-	
+
 object可以描述成，(引号内表示终结符，括号指示结合顺序)
-	
+
 	object ＝ "{" ((string ":" value) ("," string ":" value)*)? "}"
-	
+
 其他就依次类推...
-	
+
 ---
 
 回来开始写代码：
@@ -75,9 +75,9 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	    else
 	      return false, nil, start
 	    end
-	    
+
 	  end
-	  
+
 	  return matcher
 	end
 
@@ -90,11 +90,11 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	  if handler == nil then
 	    handler = no_h
 	  end
-	  
+
 	  -- the paralleized matcher function
 	  function p_matcher(json_str, start)
 	    local r,v,s
-	    
+
 	    for i=1,#matchers do
 	      r,v,s = matchers[i](json_str, start)
 	      if r then
@@ -103,10 +103,10 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	        return r,handler(v),s
 	      end
 	    end
-	    
+
 	    return false,nil,start
 	  end
-	  
+
 	  return p_matcher
 	end
 
@@ -117,12 +117,12 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	  if handler == nil then
 	    handler = no_h
 	  end
-	  
+
 	  -- the serialized matcher function
 	  function s_matcher(json_str, start)
 	    local r,v,s = false,nil,start
 	    local results = {}
-	    
+
 	    for i=1,#matchers do
 	      r,v,s = matchers[i](json_str, s)
 	      if r == false then
@@ -130,19 +130,19 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	      end
 	      table.insert(results,v)
 	    end
-	    
+
 	    if handler == nil_h then return true, nil, s end
 	    if handler == no_h then return true, results, s end
 	    return true,handler(results),s
 	  end
-	  
+
 	  return s_matcher
 	end
 
 匹配0或任意次和匹配1或任意次之间存在转换关系，实现中选了1或任意次匹配作为原子操作，0或任意次可以描述为:(""表示空串)
 
 	0_or_more = one_or_more | ""
-	
+
 下面是1或任意次匹配操作，接受一个匹配函数和一个结果处理函数，返回一个匹配1次或任意次的匹配函数。
 
 	-- make a matcher match one or more
@@ -150,18 +150,18 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	  if handler == nil then
 	    handler = function(v) return v end
 	  end
-	  
+
 	  -- the one or more matcher function
 	  function oom_matcher(json_str, start)
 	    local r,v,s = false,nil,start
 	    local results = {}
-	    
+
 	    r,v,s = matcher(json_str, s)
 	    if r == false then
 	      return false,nil,s
 	    end
 	    table.insert(results,v)
-	    
+
 	    while true do
 	      r,v,s = matcher(json_str, s)
 	      if r == false then
@@ -169,12 +169,12 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	      end
 	      table.insert(results,v)
 	    end
-	    
+
 	    if handler == nil_h then return true, nil, s end
 	    if handler == no_h then return true, results, s end
 	    return true,handler(results),s
 	  end
-	  
+
 	  return oom_matcher
 	end
 
@@ -187,7 +187,7 @@ object可以描述成，(引号内表示终结符，括号指示结合顺序)
 	local or_empty = function(matcher)
 	  return parallelize{matcher,empty_m}
 	end
-	
+
 定义完这些，就可以开始描述我们的匹配函数了。
 
 	-- main matchers
@@ -198,12 +198,12 @@ value匹配函数的描述，value为number_m,string_m,boolean_m,null_m,object_m
 	-- value
 	value_m = function(json_str,s)
 	  -- use value_a to bootup
-	  if value_a==nil then 
+	  if value_a==nil then
 	    value_a = parallelize{number_m,string_m,boolean_m,null_m,object_m,array_m}
 	  end
 	  return value_a(json_str,s)
 	end
-	
+
 这里的value需要使用value_a来协助描述，因为代码最终会出现循环引用，此时number_m,string_m,boolean_m,null_m,object_m,array_m都还没定义，需要在定义好后，才能生成value的匹配函数。
 
 匹配null的函数，使用生成函数生成。
@@ -267,13 +267,13 @@ unicode到utf8转换函数：
 
 	-- string
 	local quotation_m = generator("\"",nil_h)
-	
+
 匹配非"\"字符的函数，生成函数生成。
 
 	local char_m = generator("[^\"\\]+", no_h)
-	
+
 转义表
-	
+
 	local escape_char = {
 	    ["\""] = "\"",
 	    ["\\"] = "\\",
@@ -286,9 +286,9 @@ unicode到utf8转换函数：
 	  }
 
 匹配"\"字符函数。
-	  
+
 	local backslash_m = generator("\\", nil_h)
-	
+
 转义符号匹配和处理函数，注意传入的结果处理函数。
 
 	local escape_char_m = generator("[\"\\/bfnrt]",function(c) return escape_char[c] end)
@@ -363,13 +363,13 @@ object的描述，各层结果处理函数比较复杂。
 	  },
 	  function(t)
 	    local o = {}
-	        
+
 	    if t[1] then
 	      for k,v in pairs(t[1]) do
 	        o[v[1]] = v[2]
 	      end
 	    end
-	    
+
 	    return o
 	  end
 	)
@@ -383,9 +383,9 @@ array的描述，array需要保持一个状态index，如果直接用基本操�
 	array_m = function(json_str, start)
 
 	  local array,index = {}, 1
-	  local add_item = function(v) array[index] = v[1]; index=index+1 end 
+	  local add_item = function(v) array[index] = v[1]; index=index+1 end
 	  local array_item_m = serialize({value_m},add_item)
-	  
+
 	  local array_a = serialize{
 	      bracket_l_m,
 	      or_empty(
@@ -398,7 +398,7 @@ array的描述，array需要保持一个状态index，如果直接用基本操�
 	          ),
 	      bracket_r_m
 	    }
-	  
+
 	  local r,v,s = array_a(json_str,start)
 	  return r,array,s
 	end
@@ -407,15 +407,12 @@ array的描述，array需要保持一个状态index，如果直接用基本操�
 
 	local function Marshal(json_str)
 	  local result,value,start = value_m(json_str,1)
-	  if result --and start == #json_str+1 
+	  if result --and start == #json_str+1
 	  then
-	    return value 
+	    return value
 	  else
 	    return nil, "error_type"
 	  end
 	end
 
 lua table 反解析成 json string 的比较直观，对每一种lua value类型写一个转换函数即可，此处不冗述。
-
-
-

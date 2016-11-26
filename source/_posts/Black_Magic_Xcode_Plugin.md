@@ -1,6 +1,6 @@
-title: 黑魔法之Xcode Plugin开发 
+title: 黑魔法之Xcode Plugin开发
 date: 2014-11-24 22:42:01
-tags: [Xcode,Plugin]
+tags: [Xcode, Plugin]
 ---
 
 Xcode 插件的黑科技
@@ -10,7 +10,7 @@ Xcode 插件的黑科技
 先贴段代码：
 
     NSString *workspacePath = @"";
-    
+
     // to find current project path
     NSArray *workspaceWindowControllers = [NSClassFromString(@"IDEWorkspaceWindowController") valueForKey:@"workspaceWindowControllers"];
     id workSpace;
@@ -19,19 +19,19 @@ Xcode 插件的黑科技
             workSpace = [controller valueForKey:@"_workspace"];
         }
     }
-    
+
     if (workSpace) {
         workspacePath = [[workSpace valueForKey:@"representingFilePath"] valueForKey:@"_pathString"];
     }
-    
+
 这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。
 
- <!-- more --> 
+ <!-- more -->
 
 > 由于 Xcode 插件开发基本无文档可查，这段代码也是从网上 copy 回来的。完全没有系统了解的方法。
-> 
+>
 > 值得注意的是，这些都不是公开的API，所以，Xcode 版本迭代时，注意检查兼容性。
-> 
+>
 
 ##2. 标示支持的 Xcode 版本
 

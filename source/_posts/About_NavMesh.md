@@ -1,6 +1,6 @@
 title: 关于NavMesh，我所知道的
 date: 2016-08-21 02:37:42
-tags: [Recast & Detour,NavMesh,Game]
+tags: [Recast & Detour, NavMesh, Game]
 ---
 
 这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。
@@ -13,7 +13,7 @@ Recast & Detour [GITHUB PAGE](https://github.com/recastnavigation/recastnavigati
 
 ![Recast & Detour](/images/About_NavMesh/Image_RecastAndDetour.png)
 
-<!-- more --> 
+<!-- more -->
 
 Recast & Detour 包括了两部分，即 Recast 和 Detour。
 
@@ -94,7 +94,7 @@ Mikko Mononen 在 Recast & Detour 中生成NavMesh的基本流程受到 GDC2006 
 
 + **Session:  Crowds In A Polygon Soup: Next-Gen Path Planning**
 By David Miles, David Miles, David Miles, David Miles
-	
+
 	+ [Session mp3](/files/About_NavMesh/GDC-06-038.mp3)
 	+ [Session ppt](/files/About_NavMesh/gdc2006_miles_david_pathplanning.ppt)
 

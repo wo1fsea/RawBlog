@@ -1,13 +1,13 @@
 title: U3D iOS SDK Wrapper
 date: 2014-08-17 18:47:54
-tags: [U3D,iOS,SDK]
+tags: [U3D, iOS, SDK]
 ---
 
 很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》... 所以，iOS NtUniSDK需要一个U3D的wrapper。
 
 U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。
 
- <!-- more --> 
+ <!-- more -->
 
 	#import "UnityAppController.h"
 
@@ -28,7 +28,7 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
 
 	@interface __NtNotificationWrapper : NSObject
 	@end
-	
+
 	static __NtNotificationWrapper *__inst = nil;
 
 	@implementation __NtNotificationWrapper
@@ -38,12 +38,12 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
     	if (__inst) {
         	return;
     	}
-    
+
     	__inst = [[__NtNotificationWrapper alloc] init];
-    
+
     	//初始化通知
     	[[NSNotificationCenter defaultCenter] addObserver:__inst selector:@selector(finishInitNotification:) name:NT_NOTIFICATION_FINISH_INIT object:nil];
-    
+
 	}
 
 
@@ -54,7 +54,7 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
     	UnitySendMessage(GameObject,"NT_NOTIFICATION_FINISH_INIT","");
 	}
 
-	
+
 	+ (void) doNothing{}
 
 	@end
@@ -71,9 +71,9 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
         if (string == nil) {
             return NULL;
         }
-        
+
         const char* cstring = [string cStringUsingEncoding:NSUTF8StringEncoding];
-        
+
         if (NULL == cstring) {
             return NULL;
         }
@@ -81,28 +81,28 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
         strcpy(res, cstring);
         return res;
     }
-       
+
     NSString* __makeNSString(const char* cstring)
     {
         if (cstring == NULL) {
             return nil;
         }
-            
+
         NSString* nsstring = [[NSString alloc] initWithCString:cstring encoding:NSUTF8StringEncoding];
-        
+
         return nsstring;
     }
-        
+
     void __NtSdkMgr_ntInit()
     {
         [__NtNotificationWrapper doNothing];
         [NtSdkMgr ntInit];
     }
-	
+
 	#if defined(__cplusplus)
 	}
 	#endif
-	
+
 注意上述代码中，对Notification的传递使用了
 
 	extern void UnitySendMessage(const char *, const char *, const char *);
@@ -121,7 +121,7 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
 	using System.Text;
 
 	namespace NtUniSdk{
-		namespace Unity3d{ 
+		namespace Unity3d{
 			public class SdkU3d : MonoBehaviour
 			{
 
@@ -132,7 +132,7 @@ U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层�
 
 				[DllImport("__Internal")]
 				private static extern void __NtSdkMgr_ntInit();
-			
+
 			};
 
 		}

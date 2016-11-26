@@ -1,6 +1,6 @@
-title: 关于AppStore IAP的新旧Receipt 
+title: 关于AppStore IAP的新旧Receipt
 date: 2014-08-17 21:27:40
-tags: [iOS,IAP,Receipt]
+tags: [iOS, IAP, Receipt]
 ---
 
 iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。
@@ -12,11 +12,11 @@ iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。
 如果使用了IAP，Apple官方的建议是使用下列代码来处理：
 
     NSData *receipt = nil;
-    
+
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
         // Load resources for iOS 6.1 or earlier
         receipt = transaction.transactionReceipt;
-        
+
     } else {
         NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
         receipt = [NSData dataWithContentsOfURL:receiptURL];
@@ -24,7 +24,7 @@ iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。
 
 上面的代码很容易以为，新旧接口取得的receipt格式是一致的。其实不然。
 
- <!-- more --> 
+ <!-- more -->
 
 在NtUniSdk里面,iOS官方渠道的易信和网易通行证使用了IAP,然后使用了上述Apple官方建议的代码，结果就是receipt格式不一致，计费验证不通过，把接入SDK的G3坑了一顿。
 
@@ -143,4 +143,3 @@ iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。
 	}
 
 Apple的IAP一直存在一个比较蛋疼的问题，在IAP的交易订单上没有填写额外信息的地方。由于存在网游的账号和AppStore支付账号两套系统，道具发放一直存在着可能在支付过程意外中断而导致漏洞的情况。iOS7.0在SKPayment中提供了一个applicationUsername属性用于填写用户信息，不过鉴于iOS7.0－的系统中没有该属性，在短时间内对这种意外情况改善也不大。
-

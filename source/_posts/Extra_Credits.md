@@ -1,13 +1,13 @@
 title: 推荐一个系列视频《Extra Credits》
 date: 2014-11-27 00:43:39
-tags: [Extra Credits, game, video lesson series]
+tags: [Extra Credits, Game, Video Lesson Series]
 ---
 
 最近中午的午休时间都在看[《Extra Credits》](http://extra-credits.net/)，挺赞的，是一个讨论游戏行业相关话题的系列视频。在此推荐一下。
 
 ![Extra Credits](/images/extra_credits.png)
 
- <!-- more --> 
+ <!-- more -->
 
 这是wikipedia上的介绍。
 
@@ -22,6 +22,3 @@ Links:
 [Extra Credits's channel on YouTube](https://www.youtube.com/user/ExtraCreditz)
 
 [the wikipedia link fo Extra Credits](http://en.wikipedia.org/wiki/Extra_Credits)
-
-
-
