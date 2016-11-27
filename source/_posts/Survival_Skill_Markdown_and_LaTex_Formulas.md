@@ -168,101 +168,83 @@ Markdown 中缩进一个字表符或者4个空格表示一个代码块：
 
 ![](http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
 
-\documentclass{article}
-%
-% 数学环境支持
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}
-\begin{document}
-$\sqrt{x}$, $\frac{1}{2}$.
+### 运算符
 
-\[ \sqrt{x}, \]
+下列运算符分别表示：
 
-\[ \frac{1}{2}. \]
-\end{document}
-可以发现，在行间公式和行内公式中，分式的输出效果是有差异的。如果要强制行内模式的分式显示为行间模式的大小，可以使用\dfrac, 反之可以使用\tfrac。
+    \[ \pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\; \]
 
-运算符
-
-一些小的运算符，可以在数学模式下直接输入；另一些需要用控制序列生成，如
-
-\[ \pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx \; \equiv \]
-\[ \sum, \prod, \lim, \int \]
-
-连加、连乘、极限、积分等大型运算符分别用生成。他们的上下标在行内公式中被压缩，以适应行高。我们可以用\limits和\nolimits来强制显式地指定是否压缩这些上下标。例如：
-
-$ \sum_{i=1}^n i\quad \prod_{i=1}^n $
-$ \sum\limits _{i=1}^n i\quad \prod\limits _{i=1}^n $
-\[ \lim_{x\to0}x^2 \quad \int_a^b x^2 dx \]
-\[ \lim\nolimits _{x\to0}x^2\quad \int\nolimits_a^b x^2 dx \]
-多重积分可以使用\iint, \iiint, \iiiint, \idotsint 等命令输入。
-
-\[ \iint\quad \iiint\quad \iiiint\quad \idotsint \]
-分隔符
-
-各种括号用(), [], \{\}, \langle\rangle 等命令表示；注意花括号通常用来输入命令和环境的参数，所以在数学公式中它们前面要加\。因为 LaTeX 中|和\|的应用过于随意，amsmath 宏包推荐用\lvert\rvert和\lVert\rVert取而代之。
-
-为了调整这些分隔符的大小，amsmath宏包推荐使用\big, \Big, \bigg, \Bigg放在上述括号前面调整大小。
-
-\[ \Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg) \]
-\[ \Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg] \]
-\[ \Bigg \{\bigg \{\Big \{\big \{\{x\}\big \}\Big \}\bigg \}\Bigg\} \]
-\[ \Bigg\langle\bigg\langle\Big\langle\big\langle\langle x
-\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle \]
-\[ \Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x
-\rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert \]
-\[ \Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x
-\rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert \]
-省略号
-
-省略号用\dots, \cdots, \vdots, \ddots 等命令表示。\dots 和\cdots的纵向位置不同，前者一般用于有下标的序列。
-
-\[ x_1,x_2,\dots ,x_n\quad 1,2,\cdots ,n\quad
-\vdots\quad \ddots \]
-矩阵
-
-amsmath 的pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix 等环境可以在矩阵两边加上各种分隔符。
-
-\[ \begin{pmatrix} a&b\\c&d \end{pmatrix} \quad
-\begin{bmatrix} a&b\\c&d \end{bmatrix} \quad
-\begin{Bmatrix} a&b\\c&d \end{Bmatrix} \quad
-\begin{vmatrix} a&b\\c&d \end{vmatrix} \quad
-\begin{Vmatrix} a&b\\c&d \end{Vmatrix} \]
-效果图：
-
-使用smallmatrix环境，可以生成行内公式的小矩阵。
-
-Marry has a little matrix $ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $.
-效果图：
-
-多行公式
-
-有的公式特别长，我们需要手动为他们换行；有几个公式是一组，我们需要将他们放在一起；还有些类似分段函数，我们需要给它加上一个左边的花括号。
-
-长公式
-
-不对齐
-
-无须对齐的长公式可以使用multline环境。
-
-\begin{multline}
-x = a+b+c+{} \\
-d+e+f+g
-\end{multline}
-效果：
-
-如果不需要编号，可以使用multline*环境代替。
-
-分段函数
-
-分段函数可以用cases次环境来实现，它必须包含在数学环境之内。
-
-\[ y=\ begin{cases}
--x,\quad x\leq 0 \\
-x,\quad x>0
-\end{cases} \]
+![](http://chart.googleapis.com/chart?cht=tx&chl=\pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\;)
 
 
-\[a\]
+### 分隔符
 
-\[\frac{1}{2}.\]
+各种括号可使用 \big, \Big, \bigg, \Bigg 调整大小。
+
+    \[ \Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg] \]
+    \[ \Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\} \]
+    \[ \Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle \]
+
+![][a]
+![][b]
+![][c]
+
+[a]:http://chart.googleapis.com/chart?cht=tx&chl=\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)
+[b]:http://chart.googleapis.com/chart?cht=tx&chl=\Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\}
+[c]:http://chart.googleapis.com/chart?cht=tx&chl=\Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle
+
+### 省略号
+
+省略号有以下的表示：
+
+    \[ x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots \]
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots)
+
+### 矩阵
+
+有下列形式的矩阵描述：
+
+    \[ \begin{pmatrix} a&b\\c&d \end{pmatrix} \quad
+    \begin{bmatrix} a&b\\c&d \end{bmatrix} \quad
+    \begin{Bmatrix} a&b\\c&d \end{Bmatrix} \quad
+    \begin{vmatrix} a&b\\c&d \end{vmatrix} \quad
+    \begin{Vmatrix} a&b\\c&d \end{Vmatrix} \]
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\begin{pmatrix} a%26b\\c%26d \end{pmatrix})
+![](http://chart.googleapis.com/chart?cht=tx&chl=\begin{bmatrix} a%26b\\c%26d \end{bmatrix})
+![](http://chart.googleapis.com/chart?cht=tx&chl=\begin{Bmatrix} a%26b\\c%26d \end{Bmatrix})
+![](http://chart.googleapis.com/chart?cht=tx&chl=\begin{vmatrix} a%26b\\c%26d \end{vmatrix})
+![](http://chart.googleapis.com/chart?cht=tx&chl=\begin{Vmatrix} a%26b\\c%26d \end{Vmatrix})
+
+### 分段函数
+
+分段函数可以用 cases 来实现。
+
+    \[ y=\begin{cases}
+    -x,\quad x\leq 0 \\
+    x,\quad x>0
+    \end{cases} \]
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=y=\begin{cases} -x,\quad x\leq 0 \\x,\quad x>0\end{cases})
+
+### 更多
+
+详细的 LaTex 数学公式入门教程可参考 Michael Downes 的[Short Math Guide for LaTex](/files/LaTex/short_math_guide.pdf)。
+
+## 将 LaTex 公式转换为图片
+
+使用 google chart api 可以生成 LaTex 公式图片，接口如下：
+
+
+    http://chart.googleapis.com/chart?cht=tx&chl=这里填写LaTex公式
+
+例如：
+
+    http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+
+结果为：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
+
+需要注意的是在 url 中填入的公式中需要处理好 *&* 等字符的转换。
